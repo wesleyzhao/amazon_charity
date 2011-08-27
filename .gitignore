@@ -1,0 +1,6 @@
+*.pyc
+*.py~
+*.html~
+*~
+!.gitignore
+#*#
