@@ -1,0 +1,21 @@
+{
+  "name": "Charitable Purchasing - Amazon Affiliate Play",
+  "version": "0.1",
+  "description": "Find what you want on Amazon, and we help you donate a portion of that purchase back to your charity!",
+  "icons": {"128": "icon_128.png"},
+  "background_page": "bg.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Help a charity!", 
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "content_scripts":[
+   {
+     "matches":["http://www.amazon.com/*","https://www.amazon.com/*"],
+     "js":["content_script.js"]
+   }
+  ]
+}
