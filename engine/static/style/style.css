@@ -1,0 +1,72 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Helvetica', Arial, sans-serif;
+    background: url('/static/images/bg_texture.png') repeat;
+}
+
+h1 {
+    font-family:"Copse",arial,serif;
+    color: white;
+    font-weight: normal;
+    font-size: 32px;
+    margin: 0px;
+}
+
+h2 {
+    font-family: "Copse",arial,serif;
+    font-size: 24px;
+    color: #FFC800;
+    font-weight: normal;
+    margin: 10px 0 10px;
+}
+    
+#container{
+    
+}
+
+#top{
+    background-color: #00396A;
+}
+
+#navbar {
+    height: 60px;
+    background: white;
+    list-style: none;
+    margin-top: 20px;
+}
+
+#logo {
+    float: left;
+}
+
+#navlinks {
+    float: right;
+}
+
+#navList{
+    list-style: none;
+}
+
+#navlink{
+    display: inline;
+}
+/* CLEARFIX ----------------------------------- */
+
+
+/* For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after{
+    clear: both;
+}
+
+/* For IE6/7 */
+.clearfix {
+    zoom:1;
+}
