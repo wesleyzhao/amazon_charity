@@ -6,11 +6,6 @@ catch(err){
     //this means this is not a working page
     var asin="";
 }
-var additionalInfo = {
-    "asin":asin
-};
-chrome.extension.connect().postMessage(additionalInfo);
-
 
 if (asin){
 
