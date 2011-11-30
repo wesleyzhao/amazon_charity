@@ -3,13 +3,19 @@
   <head>
     <style>
       body {
-      min-width:200px;
+      min-width:240px;
       overflow-x:hidden;
       }
     </style>
+    <script type="text/javascript" src="options_save.js"></script>
   </head>
-  <body>
-    We do not detect a valid Amazon product page, sorry!
-    <p>Please visit <a href="http://www.amazon.com">Amazon.com</a> and find a product you would like, then <b>click</b> to help your charity!</p>
+  <body onload="restore_options()">
+    <center><h3>Update your affiliate tag</h3></center>
+    <p>
+      Your tag: <input type="text" id="tag-input" value=""/>
+      <br><span id="saved-message"></span>
+    </p>
+    <input type="hidden" id="hidden-session-id" value=""/>
+    <center><button onclick="save_options()">Save</button></center>
   </body>
 </html>
