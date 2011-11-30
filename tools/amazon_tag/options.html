@@ -2,16 +2,22 @@
   <head>
     <title>Charitable Purchasing Options Page</title>
     <script type="text/javascript" src="options_save.js"></script>
+    <script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="new_charities.js"></script>
    </head>
 
-  <body onload="restore_options()">
-
+  <body onload="restore_options(); placeCharitiesByDiv('charity-list');">
+    <h2>Update your charity's Amazon affiliate tag</h2>
     Your affiliate tag: <input id="tag-input" type="text" value=""/>
     <input id="hidden-session-id" type="hidden" value=""/>
     <br>
     <span id="saved-message"></span>
     <br>
     <button onclick="save_options()">Save</button>
+      <h3>Some charities to get you started</h3>
+    <p id="charity-list">
+
+    </p>
     <p>
       Add your Charity to our public list here: <a href="http://bit.ly/AddAmazonCharity" target="_blank">bit.ly/AddAmazonCharity</a>
     </p>

@@ -11,7 +11,8 @@
     "popup": "popup.html"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "http://dl.dropbox.com/*"
   ],
   "content_scripts":[
    {
