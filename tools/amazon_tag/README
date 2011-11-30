@@ -1,0 +1,15 @@
+CHANGELOG
+
+11/30 
+Added passive tagging
+      - if you are on a product page, it will automatically
+      detect that, check if your affiliate tag is already
+      loaded, and if not then it will reload the page appending
+      your affiliate tag
+      - a RED notification under the title of the product will
+      always show which affiliate tag is currently being used
+
+Added customization
+      - If you open up Settings > Options > Extensions and find
+      the extension, you can click the "Options" button and
+      set your affiliate tag yourself
