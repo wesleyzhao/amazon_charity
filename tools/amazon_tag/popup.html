@@ -8,6 +8,7 @@
       }
     </style>
     <script type="text/javascript" src="options_save.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
   </head>
   <body onload="restore_options()">
     <center><h3>Update your affiliate tag</h3></center>
@@ -17,5 +18,8 @@
     </p>
     <input type="hidden" id="hidden-session-id" value=""/>
     <center><button onclick="save_options()">Save</button></center>
+    <p>
+      Add your Charity to our public list here: <a href="http://bit.ly/AddAmazonCharity" onclick="openNewPageWithURL('http://bit.ly/AddAmazonCharity');">bit.ly/AddAmazonCharity</a>
+    </p>
   </body>
 </html>
