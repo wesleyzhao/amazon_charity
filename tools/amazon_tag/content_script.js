@@ -114,6 +114,11 @@ function addTagNotification(tag){
       tag: string, the tag to be displayed
      */
     var product_title_el = document.getElementsByClassName('parseasinTitle')[0]; // get the product title HTML element
+    if (!product_title_el){
+	// if this is a video (or some other product page where this doesn't work) revert to this element
+	var product_details = document.getElementById('prod-details');
+	product_title_el = product_details.getElementsByTagName('h1')[0];
+    }
     var tagger = document.createElement('div'); // create the new element we are going to add
     tagger.id = 'tag-notification';
     tagger.setAttribute('style', "color: red"); // set the style

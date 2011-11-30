@@ -1,7 +1,7 @@
 {
-  "name": "Charitable Purchasing - Amazon Affiliate Play",
+  "name": "Charity Through Amazon",
   "version": "1.0",
-  "description": "Find what you want on Amazon, and we help you donate a portion of that purchase back to your charity!",
+  "description": "Shop on Amazon as normal, and we help you donate a portion of that purchase back to your charity! Usually around 6-7%.",
   "icons": {"128": "icon_128.png"},
   "options_page" : "options.html",
   "background_page": "bg.html",
