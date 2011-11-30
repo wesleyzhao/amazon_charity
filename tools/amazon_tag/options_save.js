@@ -27,6 +27,6 @@ function change_saved_message(message){
     message_box.innerHTML = message;
     setTimeout(function(){
 	message_box.innerHTML = "";
-    }, 750);
+    }, 1000);
 
 }
