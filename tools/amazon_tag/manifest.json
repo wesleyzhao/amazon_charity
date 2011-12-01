@@ -5,7 +5,7 @@
   "icons": {"128": "icon_128.png"},
   "options_page" : "options.html",
   "background_page": "bg.html",
-  "browser_action": {
+  "page_action": {
     "default_icon": "icon.png",
     "default_title": "Help a charity!", 
     "popup": "popup.html"
@@ -17,7 +17,8 @@
   "content_scripts":[
    {
      "matches":["http://www.amazon.com/*","https://www.amazon.com/*"],
-     "js":["content_script.js"]
+     "js":["content_script.js"],
+     "run_at" : "document_end"
    }
   ]
 }

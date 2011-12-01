@@ -19,7 +19,11 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
 	var session_id = request.sessionID;
 	var _isSessionIDNew = false;
 
-	if (localStorage['last_good_session_id'] == session_id){
+	if (!session_id){
+	    // this case if in a checout page where session_id is not present
+	    _isSessionIDNew = true; // true because we can't know for sure
+	}
+	else if (localStorage['last_good_session_id'] == session_id){
 	    // the session id being sent is the same as the one last stored
 	    _isSessionIDNew = false;
 	}
@@ -36,3 +40,28 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
     else
 	sendResponse({}); //snub them
 });
+
+
+chrome.tabs.onUpdated.addListener(checkForValidUrl);
+
+function checkForValidUrl(tabId, changeInfo, tab){
+    /*
+      Checks to see if the page is an Amazon URL, and if so, displayes
+      the pageAction
+     */
+    var amazon_regexp = /(http|https):\/\/www\.amazon\.(com|at|ca|fr|de|it|jp|es|co\.uk|cn).*/; //regexp for every region Amazon URL
+    if (amazon_regexp.test(tab.url)){
+	// if the current tab's url passes the regexp test show pageAction
+	chrome.pageAction.show(tabId);
+	
+	popupIfTagIsMissing()
+    }
+
+}
+
+function popupIfTagIsMissing(){
+    if (!localStorage['tag'] || localStorage['tag'] == "no-tag-saved-yet"){
+	// if no tag is set yet, then make the popup, popup!
+	chrome.tabs.create({url: "options.html"});
+    }
+}

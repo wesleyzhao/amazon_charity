@@ -28,10 +28,109 @@ if (asin){
       affiliate tag for the shopping session and do all the little bits
       too... probably not the best name for the method
      */
-    getValueFromLocalStorage('tag', session_id);
+    getValueFromLocalStorage('tag', session_id, checkProductPageAndChangeIfNeeded);
 
+} // end if asin
+else{
+    var just_added_cart_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/cart\/view-upsell\.html.*/; // page that appears right after adding item to cart
+    var just_the_cart_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/cart\/view\.html.*/; // page that appears when just viewing the cart
 
-    } // end if asin
+    var in_checkout_signin_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/cart\/view\.html.*ref=ox_sc_proceed.*/; // page that appears when signing in to begin checkout
+    var in_checkout_signin_also_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/cart\/view\.html.*proceedToCheckout.*/; // another page that might appear when signing in to begin checkout
+    var in_checkout_shipping_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/signin\/handlers\/.*/; // page that appears when dealing with choosing shipping address right after login
+    var in_checkout_shipping_select_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/shipaddressselect\/.*/; // page that appears when selecting shipping option and will get new pages via ajx
+    var in_checkout_everything_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/.*/; // page that appears for the rest of the checkout experience
+    var in_checkout_prime_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/prime\/pip\/complete\.html.*/; // page that appears when finalizing order
+    var in_registration_regexp = /(http|https):\/\/www\.amazon\.com\/ap\/register\/.*/;
+    var current_url = document.URL;
+    
+    // now to test which page we are on and do accordingly
+    var test_el = document.createElement('div');
+    test_el.innerHTML = "asdfasdfasdfasdfasdfasdfsadfsadfasdf";
+    
+    if (just_added_cart_regexp.test(current_url)){
+	// if the page is right after a product is added into a cart
+	// there will be no session id here
+
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    addTagNotification(affiliate_tag, 'just_added_cart');
+	});
+    }
+    else if (in_checkout_signin_regexp.test(current_url) || in_checkout_signin_also_regexp.test(current_url)){
+	// if the page is right as the user is signing in to begin the
+	// checkout process. there will be a session ID here
+	var session_id = getSessionId();
+	getValueFromLocalStorage('tag', session_id, function(aff_tag, isSessionIDNew){
+	    if (isSessionIDNew){
+		// if this session id is new and not recognized yet
+		// alert the user
+		aff_tag = "NO TAG IS SET FOR THIS SESSION. PLEASE SET NEW ONE TO HELP A CHARITY!";
+	    }
+	    addTagNotification(aff_tag, 'in_checkout_process');
+	});
+    }
+    else if (just_the_cart_regexp.test(current_url)){
+	// if this page is just viewing the shopping cart
+	
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    addTagNotification(affiliate_tag, 'just_the_cart');
+	});
+    }
+    else if (in_checkout_shipping_regexp.test(current_url)){
+	// if the page is right as the user is choosing a shipping address
+	// to begin the checkout process. there will be a sessionID here
+	console.log('here');
+	var session_id = getSessionId();
+	getValueFromLocalStorage('tag', session_id, function(aff_tag, isSessionIDNew){
+	    if (isSessionIDNew){
+		// if this session id is new and not recognized yet
+		// alert the user
+		aff_tag = "NO TAG IS SET FOR THIS SESSION. PLEASE SET NEW ONE TO HELP A CHARITY!";
+	    }
+	    addTagNotification(aff_tag, 'in_checkout_process');
+	});
+    }   
+    else if (in_checkout_shipping_select_regexp.test(current_url)){
+	// if this page is the special shpping select page in checkout
+	// process there will not be a session id available
+
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    
+	    console.log('here trying to get everything');
+	    addTagNotification(affiliate_tag, 'in_checkout_process');
+	    
+	    document.body.addEventListener("mouseover", function(){
+		addTagNotification(affiliate_tag, 'super_annoying_ajax')
+	    }, false);
+	    /*
+	    addEvent(window, "load", function(){
+		addEvent(document.body, "mouseover", addTagNotification(affiliate_tag, 'in_checkout_process'));
+	    });
+	    
+	    $("body").mouseover(function(){
+		addTagNotification(affiliate_tag, 'in_checkout_process');
+	    });
+	    */
+	});
+    }
+    else if (in_checkout_everything_regexp.test(current_url)){
+	// if this page is anything else in the checkout process
+	// there will not be a session id available
+	console.log('in here everything');
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    console.log('here trying to get everything');
+	    addTagNotification(affiliate_tag, 'in_checkout_process');
+	});	
+    }
+    else if (in_registration_regexp.test(current_url)){
+	// if this page is the user registration process
+	// there will not be a session id available
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    addTagNotification(affiliate_tag, 'in_checkout_process');
+	});	
+    }
+    
+}
 
 
 function changeURLBasedOnTag(the_tag){
@@ -69,7 +168,7 @@ function changeURLBasedOnTag(the_tag){
 
 }
 
-function getValueFromLocalStorage(storage_key, session_id){
+function getValueFromLocalStorage(storage_key, session_id, function_passed){
     /*
       Gets the affiliate tag from localStorage (by talking to the 
       background page) and then figures out if the page needs to be 
@@ -82,7 +181,7 @@ function getValueFromLocalStorage(storage_key, session_id){
      */
 
     var the_value = "the_value_default"; // set the tag to a default value
- 
+
     chrome.extension.sendRequest({
 	method: "getLocalStorage",
 	key: storage_key, // pass 'tag' to get the tag
@@ -90,40 +189,115 @@ function getValueFromLocalStorage(storage_key, session_id){
     }, function(response){
 	// once the response is received we end up here
 
-	the_value = response.data; // sets the_value to the tag as stored in localStorage
+	function_passed(response.data, response.isSessionIDNew);
 
-	if (response.isSessionIDNew){
-	    // if the session id sent is new and was not previously in localStorage
-	    changeURLBasedOnTag(the_value); // change the URL of the page to append the affiliate tag
-	}
-	else{
-	    // if the session is old and already shopping as a tag
-	    // make sure the user knows who they are shopping for
-	    addTagNotification(the_value);
-	}
     });
 
 
 }
 
-function addTagNotification(tag){
+function checkProductPageAndChangeIfNeeded(affiliate_tag, isSessionIDNew){
+    /*
+      Checks to see if the page is part of a known session with the 
+      current affiliate_tag, and if not then it will redirect the page
+      to add the GET value of the tag. And if so, then it will make sure
+      the user is notified which tag is being used.
+     */
+
+    if (isSessionIDNew){
+	// if the session id sent is new and was not previously in localStorage
+	changeURLBasedOnTag(affiliate_tag); // change the URL of the page to append the affiliate tag
+    }
+    else{
+	// if the session is old and already shopping as a tag
+	// make sure the user knows who they are shopping for on
+	// product page
+	addTagNotification(affiliate_tag, 'product');
+    }
+    
+}
+
+function addTagNotification(tag, page_type){
     /*
       Add a notification under the title of the Amazon product displaying
-      what affiliate tag is currently being used
+      what affiliate tag is currently being used based off what page type
+      is currently being displayed.
 
       tag: string, the tag to be displayed
+      page_type: string, to indicate what page we are inserting notification
+      on. So far the following work: 'product', 'just_added_cart'
      */
-    var product_title_el = document.getElementsByClassName('parseasinTitle')[0]; // get the product title HTML element
-    if (!product_title_el){
-	// if this is a video (or some other product page where this doesn't work) revert to this element
-	var product_details = document.getElementById('prod-details');
-	product_title_el = product_details.getElementsByTagName('h1')[0];
+
+    var el_array = []; // array to store elements to be appended notification to
+
+    /*
+      first set of if statements gets the element for the notification to
+      be inserted to based off the page_type submitted.
+     */
+    if (page_type == 'product'){
+	// first if handles a product page
+
+	var product_title_el = document.getElementsByClassName('parseasinTitle')[0]; // get the product title HTML element
+	if (!product_title_el){
+	    // if this is a video (or some other product page where this doesn't work) revert to this element
+	    var product_details = document.getElementById('prod-details');
+	    product_title_el = product_details.getElementsByTagName('h1')[0];
+	}
+	console.log(product_title_el);
+	el_array.push(product_title_el);
+	console.log(el_array);
     }
+    else if (page_type == 'just_added_cart'){
+	// handles the page that shows up right after adding something to
+	// cart
+
+	el_array.push(document.getElementById('hl-confirm'));
+    }
+    else if (page_type == 'just_the_cart'){
+	// handles the page that shows up when viewing just the shopping
+	// cart
+	el_array.push(document.getElementsByClassName('round-box')[0]);
+    }
+    else if (page_type == 'in_checkout_process'){
+	// if in process of checking out
+	console.log('here in checkout process');
+	el_array.push(document.getElementById('progressbar'));
+	el_array.push(document.getElementById('ap_header'));
+	el_array.push(document.getElementsByClassName('navigation')[0]);
+	el_array.push(document.getElementsByClassName('progressbar')[0]);
+    }
+    else if (page_type == 'super_annoying_ajax'){
+	var annoying_ajax_el = document.getElementById('progressbar');
+	var possible_tag = annoying_ajax_el.getElementsByClassName('tag-notification')[0];
+	if (!possible_tag && annoying_ajax_el){
+	    el_array.push(annoying_ajax_el);
+	}
+	var annoying_ajax_el2 = document.getElementsByClassName('navigation')[0];
+	var possible_tag2 = annoying_ajax_el2.getElementsByClassName('tag-notification')[0];
+	if (!possible_tag2 && annoying_ajax_el2){
+	    el_array.push(annoying_ajax_el2);
+	}
+    }
+
+    // after to_insert_el (the element which notification will be appended)
+    // is gotten.
     var tagger = document.createElement('div'); // create the new element we are going to add
     tagger.id = 'tag-notification';
-    tagger.setAttribute('style', "color: red"); // set the style
-    tagger.innerHTML = '(shopping as the affiliate: "' + tag + '")';
-    product_title_el.appendChild(tagger); // add the new notification to the title by appending
+    tagger.setAttribute('style', "color: red; font-size: 1.7em;"); // set the style
+    tagger.setAttribute('class', "tag-notification");
+    tagger.innerHTML = '(shopping for the affiliate: "' + tag + '")';
+    
+    for (var i = 0; i < el_array.length; i++){
+	// get all the elemtns in el_arrary, usually this is just one
+	// then append the notification
+	var element = el_array[i];
+	console.log(element);
+	if (element){
+	    // only append if the element exists
+	    element.appendChild(tagger);
+	}
+    }
+//    to_insert_el.appendChild(tagger); // add the new notification to the title by appending
     
 }
 
@@ -132,5 +306,30 @@ function getSessionId(){
       Get the session id based off the HTML ID from the Amazon product page
      */
     var session_el = document.getElementById('session-id');
-    return session_el.value;
+    var session_id = ""
+    try{
+	// try to get the session id value from the previous element
+	session_id = session_el.value;
+    }
+    catch(err){
+	// this means 'session-id' was not a valid element, so try sessionID
+	// instead from an input name
+	try{
+	    session_id = document.getElementsByName('sessionID')[0].value;
+	}
+	catch(err){
+	    // this means sessionID is not an input name but an ID...
+	    try{
+		// this try is ONLY for the case of being in the final
+		// process of checkout where this function will be called
+		// but there will be no session ID in sight
+		session_id = document.getElementById('sessionID').getAttribute('value');
+	    }
+	    catch (err){
+		session_id = ""
+	    }
+	}
+    }
+
+    return session_id;
 }
