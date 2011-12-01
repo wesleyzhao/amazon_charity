@@ -13,3 +13,13 @@ Added customization
       - If you open up Settings > Options > Extensions and find
       the extension, you can click the "Options" button and
       set your affiliate tag yourself
+
+12/1
+Added affiliate tag notification throughout checkout
+      - from viewig the cart, to signing in, the shipping, to
+      finalizing order, the affiliate tag will now show up for 
+      you to verify
+Added detection on first use
+      - if it detects on first use of Amazon.com that no tag has
+      been saved, the options page will automatically open
+Changed to pageAction instead of browserAction
