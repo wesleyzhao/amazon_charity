@@ -23,3 +23,6 @@ Added detection on first use
       - if it detects on first use of Amazon.com that no tag has
       been saved, the options page will automatically open
 Changed to pageAction instead of browserAction
+
+12/2
+Fixed options.html popping up twice on first use of extension
