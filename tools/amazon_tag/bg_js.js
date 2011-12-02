@@ -62,6 +62,15 @@ function checkForValidUrl(tabId, changeInfo, tab){
 function popupIfTagIsMissing(){
     if (!localStorage['tag'] || localStorage['tag'] == "no-tag-saved-yet"){
 	// if no tag is set yet, then make the popup, popup!
-	chrome.tabs.create({url: "options.html"});
+
+	if (!localStorage['has_options_popped_up_for_first_time_yet']){
+	    // protects the user from seeing multiple option pages
+	    // from popping up. Not sure why multiple
+	    // popup in the first place.. should probably figure that
+	    // out
+
+	    chrome.tabs.create({url: "options.html"});
+	    localStorage['has_options_popped_up_for_first_time_yet'] = 1;
+	}
     }
 }
