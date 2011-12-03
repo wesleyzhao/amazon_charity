@@ -26,3 +26,8 @@ Changed to pageAction instead of browserAction
 
 12/2
 Fixed options.html popping up twice on first use of extension
+
+12/3
+Added the tag to the final thank you page
+      - untested.... so...
+      ** UPDATED: tested. Works

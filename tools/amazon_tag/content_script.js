@@ -42,6 +42,8 @@ else{
     var in_checkout_everything_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/.*/; // page that appears for the rest of the checkout experience
     var in_checkout_prime_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/prime\/pip\/complete\.html.*/; // page that appears when finalizing order
     var in_registration_regexp = /(http|https):\/\/www\.amazon\.com\/ap\/register\/.*/;
+    var purchased_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/thankyou\/.*/; // page that appears after the user just made a purchase
+    
     var current_url = document.URL;
     
     // now to test which page we are on and do accordingly
@@ -112,6 +114,13 @@ else{
 	    });
 	    */
 	});
+    }
+    else if (purchased_regexp.test(current_url)){
+	// if this page is the user just finished making a purchase
+	// no session id here
+	getValueFromLocalStorage('tag', "", function(affiliate_tag, isSessionIDNew){
+	    addTagNotification(affiliate_tag, 'purchased');
+	});	
     }
     else if (in_checkout_everything_regexp.test(current_url)){
 	// if this page is anything else in the checkout process
@@ -277,6 +286,13 @@ function addTagNotification(tag, page_type){
 	if (!possible_tag2 && annoying_ajax_el2){
 	    el_array.push(annoying_ajax_el2);
 	}
+    }
+    else if (page_type = 'purchased'){
+	// if the user just finished making a purchase and now is on the 
+	// thank you page
+	console.log('here');
+	var thank_you_el =  document.getElementById('thank-you-header');
+	el_array.push(thank_you_el);
     }
 
     // after to_insert_el (the element which notification will be appended)

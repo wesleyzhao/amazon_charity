@@ -1,6 +1,6 @@
 {
   "name": "Charity Through Amazon",
-  "version": "1.21",
+  "version": "1.23",
   "description": "Shop on Amazon as normal, and we help you donate a portion of that purchase back to your charity! Usually around 6-7%.",
   "icons": {"128": "icon_128.png"},
   "options_page" : "options.html",
