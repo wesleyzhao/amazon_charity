@@ -1,0 +1,141 @@
+
+body {
+	background-image:url(bg.jpg);
+	background-repeat:reapeat;
+	padding:0px;
+	margin:0px;
+	alignment-adjust:
+}
+
+p, span {
+  font-family: museo-slab,Georgia,Times,serif;
+  line-height:1.6;
+  color:white;
+  font-size:13px;
+  
+}
+
+a {
+  font-family: museo-slab,Caecilia Lt Std,serif;
+  text-decoration:none;
+  font-weight:bold;
+  color:#962915;
+}
+
+a:hover {text-decoration:underline;}
+
+.icon {
+	float:left;width:88px;padding-right:20px;
+}
+
+
+.description {
+	float:right;
+	width:290px;
+	font-size:11px;
+	color:#FFC9C2;
+}
+
+.howTo {
+	float:right;
+	text-align:left;
+	padding-bottom:30px;
+	vertical-align:middle;
+}
+
+.subheader {
+	width:500px; 
+	padding: 10px 20px 0px 20px;
+}
+
+
+options p {
+	color:#900;
+}
+
+.find{ 
+	font-size:14px;
+	color:grey;
+	font-weight:bold;
+	padding-top:30px;
+}
+
+.update {
+	color:#ae5847;
+	font-size: 16px;
+	padding-top: 20px;
+}
+
+.charityList {
+	font-size:12px;
+	color:grey;
+}
+
+.notListed {
+	color:grey;
+	font-size:10px;
+	font-style:italic;
+}
+
+.image {
+	float:left;padding-top: 15px;width: 500px;text-align: right;position: relative;
+}
+
+.content {
+	float:right; width: 440px;padding-right: 50px;
+}
+
+.centerDiv {
+	 margin-right: auto; margin-left: auto;
+}
+
+.stripes {
+	background-image:url(popup/bg_stripe.jpg);
+	background-repeat:repeat;
+}
+
+a.greyLink {
+	color:grey;
+}
+
+
+.footerKey {
+	float:left;
+	margin-right: auto; margin-left: auto;
+	padding: 0px 15px;
+}
+
+a:footerKey {
+	font-weight:normal;
+}
+
+.key {
+	font-size:16px;
+	font-style:italic;
+	color:white;
+	padding:0px;
+	margin:0px;
+}
+
+.subKey {
+	font-size:10px;
+	color:#ae5847;
+	padding:0px;
+	margin:0px;
+}
+
+input {
+	font-family: Arial, Sans-Serif;
+    font-size: 13px;
+    border: solid 1px #ae5847;
+    width: 170px;
+	padding: 10px;
+	margin: 0px;
+	text-align: center;
+}
+
+
+button {
+	    border: solid 1px #ae5847;
+
+}

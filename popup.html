@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -5,30 +6,81 @@
       body {
       min-width:250px;
       overflow-x:hidden;
+	  background-image:none;
+	  background-color:white;
       }
     </style>
     <script type="text/javascript" src="options_save.js"></script>
     <script type="text/javascript" src="popup.js"></script>
     <script type="text/javascript" src="jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="new_charities.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css">
+
   </head>
-  <body onload="restore_options();">
-    <center><h3>Update your affiliate tag</h3></center>
-    <p>
-      Your tag: <input type="text" id="tag-input" value=""/>
-      <br><span id="saved-message"></span>
-    </p>
+  <body onload="restore_options();" style="text-align:center;">
+  <div style="height:100px;">
+  	<img style="padding-top:20px;" src="popup/header.png">
+  </div>
+   
+   <div style="padding:10px 0px;background-color:white;height:150px;padding-top: 32px;">
+      <p style="font-size:15px;color:#ae5847;margin:0px;padding-bottom:5px;">Update your affiliate tag:</p>
+   
+   <form action="#" name="myform" onsubmit="save_options_popup()">
+    <input type="text" id="tag-input" value=""/>
     <input type="hidden" id="hidden-session-id" value=""/>
-    <center><button onclick="save_options_popup()">Save</button></center>
-    <h4 id="charity-loader-link"><a href="#" onclick="populateCharitiesList();">Some charities to get you started</a></h4>
+    <!--<button onclick="save_options_popup()">Save</button>-->
+        
+                    
+    </form>
+   
+    <p style="color:#B46657;"id="saved-message"></p>
+    
+    
+    
+    <div class="centerDiv" style="width:200px;padding-top:10px;">
+    	<p class="greyLink" style="padding-top:0px; margin-top:0px; font-style:italic;font-weight: normal;font-size: 10px; color:grey;" id="charity-loader-link">
+    	<a href="#" style="color:grey;" onclick="populateCharitiesList();">Suggested charities</a>: <a>UNICEF</a>, <a>Canadian Red Cross</a>, <a>Amnesty International</a>
+        
+        <!--<a>amnestyintern-20</a>, <a>canadianredcr-20</a>, <a>thcoitupsosy-21</a>-->
+        
+        </p>
 
     <p id="charity-list">
 
     </p>
-    <p>
-      Add your Charity to our public list here: <a href="http://bit.ly/AddAmazonCharity" onclick="openNewPageWithURL('http://bit.ly/AddAmazonCharity');">bit.ly/AddAmazonCharity</a>
-    </p>
+    </div>
+</div>
+
+<div class="centerDiv" style="width:250px;padding-top:10px;">
+<center>
+
+<div class="footerKey">
+	<a href="/">
+    <p class="key">Find</p>
+    <p class="subKey">your charity</p>
+    </a>
+</div>
+
+<div class="footerKey">
+	<a href="http://bit.ly/AddAmazonCharity"><p class="key">Add</p>
+    <p class="subKey">a charity</p></a>
+</div>
+
+<div class="footerKey">
+	<a href="/">
+    <p class="key">About</p>
+    <p class="subKey">Us</p>
+    </a>
+</div>
+
+<br style="clear:both;" />
+</center>
+
+</div>
+   
 
   </body>
+
+
 
 </html>

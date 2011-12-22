@@ -4,22 +4,36 @@
     <script type="text/javascript" src="options_save.js"></script>
     <script type="text/javascript" src="jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="new_charities.js"></script>
-   </head>
+	<link type="text/css" rel="stylesheet" href="style.css">
 
-  <body onload="restore_options(); placeCharitiesByDiv('charity-list');">
-    <h2>Update your charity's Amazon affiliate tag</h2>
-    Your affiliate tag: <input id="tag-input" type="text" value=""/>
-    <input id="hidden-session-id" type="hidden" value=""/>
-    <br>
-    <span id="saved-message"></span>
-    <br>
-    <button onclick="save_options()">Save</button>
-      <h3>Some charities to get you started</h3>
-    <p id="charity-list">
+</head>
 
+<body>
+<div class="centerDiv">
+<div class="centerDiv" style="width:1070px;background-image:url(bg_shadow.png); background-repeat:no-repeat;text-align:center;">
+<div class="centerDiv options" style="width:550px; background-color:white; padding-top:40px;padding-bottom:35px;">
+<center>
+	
+  <body onLoad="restore_options(); placeCharitiesByDiv('charity-list');">
+    <img src="options/header.png">
+    <p class="update" style="margin:0px;padding-bottom:5px;">Update your charity affiliate tag:</p>
+   <form action="#" onsubmit="save_options()">
+     <input id="tag-input" type="text" value=""/>
+     <input id="hidden-session-id" type="hidden" value=""/>
+
+    <br>
+    <p style="color:#B46657;"id="saved-message"></p>
+    
+    <p class="find">Find your charity's tag:</p>
+    <p class="charityList" id="charity-list"></p>
+    <p class="notListed">Not listed here? Suggest your charity tag: <a href="http://bit.ly/AddAmazonCharity" target="_blank">here</a>.
     </p>
-    <p>
-      Add your Charity to our public list here: <a href="http://bit.ly/AddAmazonCharity" target="_blank">bit.ly/AddAmazonCharity</a>
-    </p>
+    
+    <div style="background-color: #901D07;width: 400px;height: 1px;margin-top: 50px;margin-bottom:20px;"></div>
+    <img src="options/happyholidays.png">
+   <p style="color:#b46657;">For more information, check out our <a href="/">site</a>.</p>
+    <p style="font-size:10px; color:#B46657;">Made by <a href="http://wesleyzhao.com">Wesley</a>. Site by <a href="http://byalicelee.com">Alice</a>.</p>
+    
+    </div></div></div>
   </body>
 </html>
