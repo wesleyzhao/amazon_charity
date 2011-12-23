@@ -17,10 +17,11 @@
   <body onLoad="restore_options(); placeCharitiesByDiv('charity-list');">
     <img src="options/header.png">
     <p class="update" style="margin:0px;padding-bottom:5px;">Update your charity affiliate tag:</p>
-   <form action="#" onsubmit="save_options()">
+   
+    <!--<form action="#" onsubmit="save_options()">-->
      <input id="tag-input" type="text" value=""/>
      <input id="hidden-session-id" type="hidden" value=""/>
-
+    <button class="button" onclick="save_options()">Save</button>
     <br>
     <p style="color:#B46657;"id="saved-message"></p>
     

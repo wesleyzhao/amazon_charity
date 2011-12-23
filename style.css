@@ -137,12 +137,21 @@ a:footerKey {
 input {
 	font-family: Arial, Sans-Serif;
     font-size: 13px;
-    border: solid 1px #ae5847;
+    border:1px solid #DEDEDE;
     width: 170px;
 	padding: 10px;
 	margin: 0px;
 	text-align: center;
-}
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+-o-border-radius: 2px;
+-ms-border-radius: 2px;
+-khtml-border-radius: 2px;
+border-radius: 2px;}
 
 
 button {
@@ -165,4 +174,18 @@ button {
 
 .footerKey a {
 	font-weight:normal;
+}
+
+.button {
+	margin-top:-1px;
+	height:37px;
+	background-color: #AE5847;
+color: white;
+font-family: arial;
+}
+
+.form {
+	
+	
+
 }
