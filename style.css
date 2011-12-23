@@ -8,15 +8,16 @@ body {
 }
 
 p, span {
-  font-family: museo-slab,Georgia,Times,serif;
+  font-family: museo-slab,Caecilia Lt Std,Georgia,Times,serif;
   line-height:1.6;
   color:white;
-  font-size:13px;
+  font-size:12px;
+  margin-top:10px;
   
 }
 
-a {
-  font-family: museo-slab,Caecilia Lt Std,serif;
+a, a:hover, a:visited {
+  font-family: museo-slab,Caecilia Lt Std,Georgia,Times,serif;
   text-decoration:none;
   font-weight:bold;
   color:#962915;
@@ -31,7 +32,7 @@ a:hover {text-decoration:underline;}
 
 .description {
 	float:right;
-	width:290px;
+	width:280px;
 	font-size:11px;
 	color:#FFC9C2;
 }
@@ -39,17 +40,25 @@ a:hover {text-decoration:underline;}
 .howTo {
 	float:right;
 	text-align:left;
-	padding-bottom:30px;
+	padding-bottom:40px;
 	vertical-align:middle;
 }
 
+.howTo a {
+	color:#B46657;
+}
+
+.description p{
+	font-size:11px;
+}
+
 .subheader {
-	width:500px; 
+	width:550px; 
 	padding: 10px 20px 0px 20px;
 }
 
 
-options p {
+.options p {
 	color:#900;
 }
 
@@ -58,6 +67,7 @@ options p {
 	color:grey;
 	font-weight:bold;
 	padding-top:30px;
+	margin-bottom: 10px;
 }
 
 .update {
@@ -82,7 +92,7 @@ options p {
 }
 
 .content {
-	float:right; width: 440px;padding-right: 50px;
+	float:right; width: 440px;padding-right: 20px;
 }
 
 .centerDiv {
@@ -121,7 +131,7 @@ a:footerKey {
 	font-size:10px;
 	color:#ae5847;
 	padding:0px;
-	margin:0px;
+	margin:-5px 0px 0px 0px;
 }
 
 input {
@@ -138,4 +148,21 @@ input {
 button {
 	    border: solid 1px #ae5847;
 
+}
+
+.charityList p {
+	margin:0px;
+	padding:0px;
+}
+
+.new-charity span {
+	color:grey;
+}
+
+.charity-tag a {
+	font-weight:normal;
+}
+
+.footerKey a {
+	font-weight:normal;
 }

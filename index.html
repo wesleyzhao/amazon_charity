@@ -5,6 +5,7 @@
 <title>Amazon Chrome Charity Extension</title>
 <script type="text/javascript" src="http://use.typekit.com/evt4sfh.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<link rel="stylesheet" href="slider.css" type="text/css"  />
 <link type="text/css" rel="stylesheet" href="style.css">
 
 </head>
@@ -14,18 +15,39 @@
 <div class="centerDiv" style="width:1070px;background-image:url(bg_shadow.png); background-repeat:no-repeat;text-align:center;">
 <center>
 	
-    <img src="frontpg/header.png" style="padding-top:75px;padding-bottom:10px;"/>
+    <img src="frontpg/header2.png" style="padding-top:50px;padding-bottom:15px;"/>
 
 	<div class="subheader">
-    	<p>Get your supporters to shop on Amazon as normal, and we help you donate a percentage of their purchases (usually 6-7%) back to your charity through Amazon's affiliate program!</p>
-		<p style="font-size:15px; padding-top:15px;">How it works:</p>
+    	<p>Get your supporters to shop on Amazon as normal, and we help you donate a percentage of their purchases (usually 6-7%) back to your charity through <a style="color:white;" href="https://affiliate-program.amazon.com/">Amazon's affiliate program</a>! Automatically help raise money for your charities and organizations like UNICEF, Red Cross, and more - by shopping on Amazon like you normally would this holiday season. </p>
+        
+        <div style="width:200px;margin-top: 26px;height: 27px;padding-top:10px; margin-bottom:55px;background-color:#982d1a;">
+           <a href="https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh/details">
+		   <p style="margin:0px;text-transform:uppercase; vertical-align:middle;">Install</p>
+           </a>
+        </div>
     </div>
         
-    <div style="width:1000px;">  
+    <div style="width:970px;">  
       
       <div class="image">
-      	<img src="frontpg/img.png" />
-      	<a href="https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh" style="position: absolute;top: 268px; right: 28px;width: 100%;">Get Started</a>
+
+
+        <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="frontpg/img1.png" alt="" data-transition="fade"/>
+                <img src="frontpg/img2.png" alt="" data-transition="fade"/>
+                <img src="frontpg/img3.png" alt="" data-transition="fade"/>
+            </div>
+        </div>
+            
+            
+       <!-- <img src="frontpg/img.png" />
+      	<div style="width:100px;
+        position: absolute;top: 268px; right: 28px;width: 100%;">
+        <a href="https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh">Get Started</a>
+        </div>-->
+        
+         <!--<p style="padding:0px 15px; font-size:9px; line-height:1.4; text-align:center;">Amazon's robust affiliates referral program allows associates to receive a commission for referring customers to Amazon. For instance, anytime a user makes a purchase on http://www.amazon.com/?tag=<strong>amnestyintern-20</strong>, a percentage of that purchase is paid to Amnesty International. This Chrome extension allows users to enter their desired affiliate tag once, and every purchase on Amazon automatically refers to that organization, without having to go through the trouble each time of finding and using that specific affiliate tag link. </p>-->
       </div>
       
       <div class="content">
@@ -34,7 +56,7 @@
             <img class="icon" src="frontpg/icon_1.png" />
             <div  class="description">
             	<img src="frontpg/hdr_1.png" />
-                <p>Add the Chrome extension <a style="color:white;" href="https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh">here</a> and add your charity id to the tag.</p>
+                <p>Add the Chrome extension <a href="https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh">here</a> and add your charity id to the tag. If you don't know what it is, don't worry - your charity likely already has one, and you can check out our <a href="options.html">public list here</a>.</p>
 
             </div>
         </div>        
@@ -43,7 +65,7 @@
             <div  class="description">
             	<img src="frontpg/hdr_2.png" />
                 <p>Do your holiday online shopping on Amazon as planned. 
-                This time you’ll see a small notice that a portion of your spendings will go to the charity of your choice. </p>
+                This time you’ll see a small notice that a portion of your spendings will go to the charity of your choice at the top of each page. </p>
             </div>
         </div>
         
@@ -51,7 +73,7 @@
             <img  class="icon" src="frontpg/icon_3.png" />
             <div  class="description">
                 <img src="frontpg/hdr_3.png" />
-                <p>Make hella bank. I’m not sure what this third step entails but I’m sure that it’s something good. Because it involves money.</p>
+                <p>A percentage of all of your purchases on Amazon will now go towards the charity or organization that you chose, allowing them to receive affiliate referral payments from Amazon. You can learn more about Amazon's program <a href="https://affiliate-program.amazon.com/">here</a>.</p>
             </div>
         </div> 
        </div>
@@ -63,10 +85,18 @@
     </center>
     
 	<br style="clear:both;" />
-    <p style="padding-top:30px;font-size:10px;">Made by <a href="http://wesleyzhao.com" style="color:#b46657;">Wesley</a>. Site by <a href="http://byalicelee.com" style="color:#b46657;">Alice</a>.</p>
+    <p style="padding:30px 0px;font-size:10px;">Made by <a href="http://wesleyzhao.com" style="color:#b46657;">Wesley</a>. Site by <a href="http://byalicelee.com" style="color:#b46657;">Alice</a>.</p>
 
 </div>
 </div>
+
+<script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
 
 </body>
 </html>

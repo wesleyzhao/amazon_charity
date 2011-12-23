@@ -21,7 +21,7 @@ function placeCharitiesByDiv(divID){
 	var filler = document.createElement('p');
 	var new_charity = document.createElement('div');
 	new_charity.setAttribute('class', 'new-charity');
-	new_charity.innerHTML = "<span class='charity-name'>" + charity + "</span>: <span class='charity-tag'><a href='#' onclick='addCharityTagToInput(\"" + charr[charity] + "\", \"tag-input\")'>" + charr[charity] + "</a></span>";
+	new_charity.innerHTML = "<span class='charity-name'>" + charity + ":</span> <span class='charity-tag'><a href='#' onclick='addCharityTagToInput(\"" + charr[charity] + "\", \"tag-input\")'>" + charr[charity] + "</a></span>";
 	filler.appendChild(new_charity); // put the new charity in the <p> tags
 	el.appendChild(filler); // put the new charity and <p> in the element
     }
