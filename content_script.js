@@ -45,11 +45,7 @@ else{
     var purchased_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/thankyou\/.*/; // page that appears after the user just made a purchase
     
     var current_url = document.URL;
-    
-    // now to test which page we are on and do accordingly
-    var test_el = document.createElement('div');
-    test_el.innerHTML = "asdfasdfasdfasdfasdfasdfsadfsadfasdf";
-    
+        
     if (just_added_cart_regexp.test(current_url)){
 	// if the page is right after a product is added into a cart
 	// there will be no session id here
