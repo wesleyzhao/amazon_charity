@@ -20,55 +20,51 @@
   <body onload="restore_options();" style="text-align:center;">
   <div class="popup">
   <div style="height:100px;">
-  	<img style="padding-top:20px;" src="popup/header.png">
+  	<img style="padding-top:26px;" src="popup/header.png">
   </div>
    
    <div style="padding:10px 0px;background-color:white;height:150px;padding-top: 32px;">
       <p style="font-size:15px;color:#ae5847;margin:0px;padding-bottom:5px;">Update your affiliate tag:</p>
    
    <!--<form action="#" name="myform" onsubmit="save_options_popup()">-->
-    <input type="text" id="tag-input" value=""/>
-    <input type="hidden" id="hidden-session-id" value=""/>
+<input id="tag-input" type="text" value="">
+<input id="hidden-session-id" type="hidden" value="undefined">
     <button class="button" onclick="save_options_popup()">Save</button>
         
                     
     </form>
-   
+    
     <p style="color:#B46657;font-size:10px;"id="saved-message"></p>
-    
-    
-    
-    <div class="centerDiv" style="width:200px;padding-top:10px;">
-    	<p class="greyLink" style="padding-top:0px; margin-top:0px; font-style:italic;font-weight: normal;font-size: 10px; color:grey;" id="charity-loader-link">
-    	Suggested charities: <a>UNICEF</a>, <a>Canadian Red Cross</a>, <a>Amnesty International</a>
-        
-        <!--<a>amnestyintern-20</a>, <a>canadianredcr-20</a>, <a>thcoitupsosy-21</a>-->
-        
-        </p>
-
-    <p id="charity-list">
-
+    <div class="centerDiv" style="width:210px;padding-top:10px;">
+    <p class="greyLink" style="padding-top:0px; margin-top:0px; font-style:italic;font-weight: normal;font-size: 12px; color:grey;" id="charity-loader-link">
+    	Suggested charities: 
+        <span class="charity-tag"><a href="#" onclick="addCharityTagToInput(&quot;thcoitupsosy-21&quot;, &quot;tag-input&quot;)">UNICEF</a></span>, 
+        <span class="charity-tag"><a href="#" onclick="addCharityTagToInput(&quot;amnestyintern-20&quot;, &quot;tag-input&quot;)">Amnesty International</a></span>, 
+        <span class="charity-tag"><a href="#" onclick="addCharityTagToInput(&quot;canadianredcr-20&quot;, &quot;tag-input&quot;)">Red Cross Canada</a></span>
     </p>
     </div>
+    
+    	
+  
 </div>
 
 <div class="centerDiv" style="height:50px;width:250px;padding-top:10px;">
 <center>
 
 <div class="footerKey">
-	<a href="/">
+	<a onclick="openNewPageWithURL('http://givewithamazon.com/options.html')">
     <p class="key">Find</p>
     <p class="subKey">your charity</p>
     </a>
 </div>
 
 <div class="footerKey">
-	<a href="http://bit.ly/AddAmazonCharity"><p class="key">Add</p>
+	<a onclick="openNewPageWithURL('http://bit.ly/AddAmazonCharity')"><p class="key">Add</p>
     <p class="subKey">a charity</p></a>
 </div>
 
 <div class="footerKey">
-	<a href="/">
+	<a onclick="openNewPageWithURL('http://givewithamazon.com')">
     <p class="key">About</p>
     <p class="subKey">Us</p>
     </a>

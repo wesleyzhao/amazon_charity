@@ -30,6 +30,11 @@ a:hover {text-decoration:underline;}
 }
 
 
+.install {
+	width:200px;margin-top: 26px;height: 27px;padding-top:10px; margin-bottom:75px;background-color:#982d1a;
+	border:1px solid #A34634;
+}
+
 .description {
 	float:right;
 	width:280px;
@@ -42,14 +47,22 @@ a:hover {text-decoration:underline;}
 	text-align:left;
 	padding-bottom:40px;
 	vertical-align:middle;
+	width:391px;
 }
 
 .howTo a {
 	color:#B46657;
 }
 
-.description p{
+.header {
+  margin-top:0px;
+  font-family: lobster,serif;
+  font-size:20px;
+} 
+
+.steps {
 	font-size:11px;
+	margin-top:5px;
 }
 
 .subheader {
