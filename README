@@ -31,3 +31,9 @@ Fixed options.html popping up twice on first use of extension
 Added the tag to the final thank you page
       - untested.... so...
       ** UPDATED: tested. Works
+
+12/24
+Added an index page for the splash page
+Changed the look of the popup/options pages
+Fixed bug for sometimes-not-working-right-before-purchase-page
+Updated manifest version
