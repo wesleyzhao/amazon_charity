@@ -251,7 +251,7 @@ function addTagNotification(tag, page_type){
 	console.log(product_title_el);
 	el_array.push(product_title_el);
 	console.log(el_array);
-	popupExtensionLink('I\'m viewing a product page lulz');
+	popupExtensionLink('I just made a purchase on @Amazon and 7% of it went to charity thanks to the Amazon Charity Chrome extension!');
     }
     else if (page_type == 'just_added_cart'){
 	// handles the page that shows up right after adding something to
@@ -290,6 +290,7 @@ function addTagNotification(tag, page_type){
 	console.log('here');
 	var thank_you_el =  document.getElementById('thank-you-header');
 	el_array.push(thank_you_el);
+	popupExtensionLink('I just made a purchase on @Amazon and 7% of it went to charity thanks to the Amazon Charity Chrome extension!');
     }
 
     // after to_insert_el (the element which notification will be appended)
@@ -349,7 +350,7 @@ function getSessionId(){
 
 function popupExtensionLink(title){
 
-    var this_extension_url = "https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh";
+    var this_extension_url = "http://www.givewithamazon.com";
     
     tweetPopup(title, this_extension_url);
 
@@ -358,7 +359,7 @@ function popupExtensionLink(title){
 function generateTweetLink(title, link){
     var baseUrl = "http://twitter.com/share";
     var encodedLink = encodeURI(link);
-    var related = "wesleyzhao";
+    var related = "wesleyzhao,byalicelee";
     
     var finalUrl = baseUrl + "?" + "url=" + encodedLink + "&text=" + title + "&related=" + related;
 
