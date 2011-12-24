@@ -80,7 +80,7 @@ else{
 	console.log('here');
 	var session_id = getSessionId();
 	getValueFromLocalStorage('tag', session_id, function(aff_tag, isSessionIDNew){
-	    if (isSessionIDNew){
+	    if (isSessionIDNew && session_id != ""){
 		// if this session id is new and not recognized yet
 		// alert the user
 		aff_tag = "NO TAG IS SET FOR THIS SESSION. PLEASE SET NEW ONE TO HELP A CHARITY!";
@@ -346,6 +346,7 @@ function getSessionId(){
     }
 
     return session_id;
+    // this will be an empty string if the page does not have one
 }
 
 function popupExtensionLink(title){
