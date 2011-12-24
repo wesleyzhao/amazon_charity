@@ -360,7 +360,8 @@ function generateTweetLink(title, link){
     var baseUrl = "http://twitter.com/share";
     var encodedLink = encodeURI(link);
     var related = "wesleyzhao,byalicelee";
-    
+    title = encodeURI(title);
+
     var finalUrl = baseUrl + "?" + "url=" + encodedLink + "&text=" + title + "&related=" + related;
 
     return finalUrl;
