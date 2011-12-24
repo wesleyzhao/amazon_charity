@@ -358,7 +358,7 @@ function popupExtensionLink(title){
 function generateTweetLink(title, link){
     var baseUrl = "http://twitter.com/share";
     var encodedLink = encodeURI(link);
-    var related = "wesleyzhao";
+    var related = "wesleyzhao,byalicelee";
     
     var finalUrl = baseUrl + "?" + "url=" + encodedLink + "&text=" + title + "&related=" + related;
 
