@@ -318,6 +318,9 @@ function addTagNotification(tag, page_type){
 function getSessionId(){
     /*
       Get the session id based off the HTML ID from the Amazon product page
+      return the session id as a string
+      if the session id (session-id or sessionID) is not found then this will
+      return an empty string
      */
     var session_el = document.getElementById('session-id');
     var session_id = ""
