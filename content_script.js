@@ -45,11 +45,7 @@ else{
     var purchased_regexp = /(http|https):\/\/www\.amazon\.com\/gp\/buy\/thankyou\/.*/; // page that appears after the user just made a purchase
     
     var current_url = document.URL;
-    
-    // now to test which page we are on and do accordingly
-    var test_el = document.createElement('div');
-    test_el.innerHTML = "asdfasdfasdfasdfasdfasdfsadfsadfasdf";
-    
+        
     if (just_added_cart_regexp.test(current_url)){
 	// if the page is right after a product is added into a cart
 	// there will be no session id here
@@ -255,6 +251,7 @@ function addTagNotification(tag, page_type){
 	console.log(product_title_el);
 	el_array.push(product_title_el);
 	console.log(el_array);
+	popupExtensionLink('I\'m viewing a product page lulz');
     }
     else if (page_type == 'just_added_cart'){
 	// handles the page that shows up right after adding something to
@@ -348,4 +345,30 @@ function getSessionId(){
     }
 
     return session_id;
+}
+
+function popupExtensionLink(title){
+
+    var this_extension_url = "https://chrome.google.com/webstore/detail/lddkddmnfgnkmalojmebjlmekjdkednh";
+    
+    tweetPopup(title, this_extension_url);
+
+}
+
+function generateTweetLink(title, link){
+    var baseUrl = "http://twitter.com/share";
+    var encodedLink = encodeURI(link);
+    var related = "wesleyzhao";
+    
+    var finalUrl = baseUrl + "?" + "url=" + encodedLink + "&text=" + title + "&related=" + related;
+
+    return finalUrl;
+}
+
+function tweetPopup(title, link){
+    var tweetLink = generateTweetLink(title, link);
+    
+    window.open(tweetLink, "tweet", "height=450,width=550,resizable=1");
+
+    return false;
 }
