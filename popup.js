@@ -10,6 +10,10 @@ function openNewPageWithURL(url){
     });
 }
 
+function openNewPageWithOptions(){
+    chrome.tabs.create({'url': chrome.extension.getURL('options.html')}, function(tab){});
+}
+
 function populateCharitiesList(){
 
     placeCharitiesByDiv('charity-list'); // method inherited from new_charities.js
