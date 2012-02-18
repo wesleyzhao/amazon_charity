@@ -251,7 +251,7 @@ function addTagNotification(tag, page_type){
 	console.log(product_title_el);
 	el_array.push(product_title_el);
 	console.log(el_array);
-	popupExtensionLink('I just made a purchase on @Amazon and 7% of it went to charity thanks to the Amazon Charity Chrome extension!');
+	// popupExtensionLink('I just made a purchase on @Amazon and 7% of it went to charity thanks to the Amazon Charity Chrome extension!');
     }
     else if (page_type == 'just_added_cart'){
 	// handles the page that shows up right after adding something to
